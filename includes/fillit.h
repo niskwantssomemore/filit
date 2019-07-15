@@ -1,41 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/13 16:34:51 by sazalee           #+#    #+#             */
-/*   Updated: 2019/07/15 17:13:10 by sazalee          ###   ########.fr       */
+/*   Created: 2019/07/15 16:18:09 by sazalee           #+#    #+#             */
+/*   Updated: 2019/07/15 16:19:49 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#ifndef FILLIT_H
+# define FILLIT_H
+# define BUFF_SIZE 4096
 
-static int	format(char *buf)
-{
-	int x;
-	int y;
-
-	x = 0;
-	y = 0;
-	while (buf[x] != '\0')
-	{
-		while (buf[x] != '\n')
-			x++;
-		if (buf[x] == '\n')
-		{
-			x++;
-			y++;
-		}
-		if (y == 4)
-		{
-			if (buf[x + 1] != '\0' || buf[x] != '\n')
-				return (0);
-			if (buf[x] == '\n')
-				x++;
-			y = 0;
-		}
-	}
-	return (1);
-}
