@@ -6,7 +6,7 @@
 /*   By: tstripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/13 15:32:35 by tstripeb          #+#    #+#             */
-/*   Updated: 2019/07/15 17:39:32 by tstripeb         ###   ########.fr       */
+/*   Updated: 2019/07/17 13:12:52 by tstripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int main(int ac, char **av)
 {
 	char	*str;
 	int		fd;
+	int		check_all;
 
 	number = 0;
 	if (ac == 2 && (fd = open(av[1], O_RDONLY)) != -1)
@@ -84,6 +85,7 @@ int main(int ac, char **av)
 		printf("str:\n%s\n", str);
 		number = counter_of_tetriminos(str);
 		printf("number:\n%d\n", number);
+		check_all = check(tetriminos);
 	}
 	else
 		ft_error();
