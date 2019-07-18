@@ -6,7 +6,7 @@
 /*   By: tstripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/13 15:32:35 by tstripeb          #+#    #+#             */
-/*   Updated: 2019/07/17 13:12:52 by tstripeb         ###   ########.fr       */
+/*   Updated: 2019/07/18 15:34:49 by tstripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char *ft_read_file(int fd)
 	return (NULL);
 }
 
-int counter_of_tetriminos(char *str)
+int counter_of_tetriminos(char *buf)
 {
 	int counter;
 	int index;
@@ -55,9 +55,9 @@ int counter_of_tetriminos(char *str)
 	counter = 0;
 	index = 0;
 	numb = 0;
-	while (str[index])
+	while (buf[index])
 	{
-		if (str[index] == '\n')
+		if (buf[index] == '\n')
 		{
 			numb++;
 			if (numb % 5 == 0 && numb != 0)
