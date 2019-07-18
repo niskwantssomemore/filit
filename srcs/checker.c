@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/13 16:34:51 by sazalee           #+#    #+#             */
-/*   Updated: 2019/07/15 17:13:10 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/07/18 15:23:11 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	format(char *buf)
 	y = 0;
 	while (buf[x] != '\0')
 	{
-		while (buf[x] != '\n')
+		while (buf[x] != '\n' && buf[x] != '\0')
 			x++;
 		if (buf[x] == '\n')
 		{
@@ -30,7 +30,7 @@ static int	format(char *buf)
 		}
 		if (y == 4)
 		{
-			if (buf[x + 1] != '\0' || buf[x] != '\n')
+			if (buf[x] != '\0' || buf[x] != '\n')
 				return (0);
 			if (buf[x] == '\n')
 				x++;
