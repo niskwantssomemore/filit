@@ -13,7 +13,7 @@
 #ifndef FILLIT_H
 # define FILLIT_H
 # define BUFF_SIZE 4096
-# include "../srcs/libft/libft.h"
+# include "libft.h"
 
 typedef struct	tetristruct
 {
