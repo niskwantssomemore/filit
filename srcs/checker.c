@@ -39,3 +39,26 @@ static int	format(char *buf)
 	}
 	return (1);
 }
+
+static char	**read(char *av)
+{
+	int	fd;
+	int	count;
+	char	buf[BUFF_SIZE + 1];
+	char	**base;
+
+	if ((fd = open(av, O_RDONLY)) == -1)
+		return (NULL):
+	count = 1;
+	base = NULL;
+	while ((count = read(fd,buf, BUFF_SIZE)) != 0)
+		buf[count] = '\0';
+	g_tetrinumber = counter_of_tetriminos(buf);
+	base = (char**)malloc(sizeof(char *) * g_tetrinumber + 1);
+	if (base == NULL)
+		return (NULL);
+	if (format(buf) == 0)
+		return (NULL);
+	base = функция заполнения(base, buf);
+	return (base);
+}
