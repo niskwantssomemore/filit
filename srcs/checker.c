@@ -40,6 +40,30 @@ static int	format(char *buf)
 	return (1);
 }
 
+static char	**fillbase(char **base, char *buf)
+{
+	int x;
+	int y;
+	int z;
+
+	x = 0;
+	y = 0;
+	z = 0;
+	while (x < g_tetrinumber)
+	{
+		if (!(base[x] = (char*)malloc(sizeof(char) * 20 + 1)))
+			return (NULL);
+		while (y < 20)
+			base[x++][y++] = buf[z];
+		base[x][20] = '\0';
+		y = 0;
+		x++;
+		z++;
+	}
+	base[x] = NULL;
+	return (base);
+}
+
 static char	**read(char *av)
 {
 	int	fd;
@@ -51,14 +75,13 @@ static char	**read(char *av)
 		return (NULL):
 	count = 1;
 	base = NULL;
-	while ((count = read(fd,buf, BUFF_SIZE)) != 0)
+	while ((count = read(fd, buf, BUFF_SIZE)) != 0)
 		buf[count] = '\0';
 	g_tetrinumber = counter_of_tetriminos(buf);
-	base = (char**)malloc(sizeof(char *) * g_tetrinumber + 1);
-	if (base == NULL)
+	if (!(base = (char**)malloc(sizeof(char *) * g_tetrinumber + 1)))
 		return (NULL);
 	if (format(buf) == 0)
 		return (NULL);
-	base = функция заполнения(base, buf);
+	base = fillbase(base, buf);
 	return (base);
 }
