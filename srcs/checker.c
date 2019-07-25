@@ -54,7 +54,11 @@ static char	**fillbase(char **base, char *buf)
 		if (!(base[x] = (char*)malloc(sizeof(char) * 20 + 1)))
 			return (NULL);
 		while (y < 20)
-			base[x][y++] = buf[z++];
+		{
+			base[x][y] = buf[z];
+			z++;
+			y++;
+		}
 		base[x][20] = '\0';
 		y = 0;
 		x++;
