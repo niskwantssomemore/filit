@@ -12,6 +12,11 @@
 
 #include "../includes/fillit.h"
 
+void		ft_error()
+{
+        write(1, ERROR, 6);
+}
+
 static int	format(char *buf)
 {
 	int x;
@@ -68,7 +73,7 @@ static char	**fillbase(char **base, char *buf)
 	return (base);
 }
 
-static char	**read(char *av)
+static char	**ft_read(char *av)
 {
 	int	fd;
 	int	count;
@@ -88,4 +93,23 @@ static char	**read(char *av)
 		return (NULL);
 	base = fillbase(base, buf);
 	return (base);
+}
+
+int		main(int ac, char **av)
+{
+	t_tetris	*begin;
+	char		**base;
+
+	begin = NULL;
+	base = NULL;
+	if (ac != 2)
+	{
+		ft_error();
+		return (-1);
+	}
+	if ((base = ft_read(av[1])) = NULL)
+	{
+		ft_error();
+		return (-1);
+	}
 }
