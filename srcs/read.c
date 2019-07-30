@@ -54,7 +54,7 @@ int			format(char *buf)
 		}
 		if (y == 4)
 		{
-			if (buf[x] != '\0' || buf[x] != '\n')
+			if (buf[x] != '\0' && buf[x] != '\n')
 				return (0);
 			if (buf[x] == '\n')
 				x++;
@@ -106,10 +106,11 @@ char		**ft_read(char *av)
 	while ((count = read(fd, buf, BUFF_SIZE)) != 0)
 		buf[count] = '\0';
 	g_tetrinumber = counter_of_tetriminos(buf);
-	if (!(base = (char**)malloc(sizeof(char *) * g_tetrinumber + 1)))
+	if (!(base = (char**)malloc(sizeof(char *) * counter_of_tetriminos(buf) + 1)))
 		return (NULL);
 	if (format(buf) == 0)
 		return (NULL);
 	base = fillbase(base, buf);
+	close(fd);
 	return (base);
 }

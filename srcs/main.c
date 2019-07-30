@@ -34,4 +34,10 @@ int		main(int ac, char **av)
 		ft_error();
 		return (-1);
 	}
+	if (!(check(base)))
+	{
+		ft_error();
+		фритайм(base, g_tetrinumber + 1);
+		return (-1);
+	}
 }
