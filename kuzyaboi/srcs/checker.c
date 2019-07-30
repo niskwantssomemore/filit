@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tstripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/16 15:41:36 by tstripeb          #+#    #+#             */
-/*   Updated: 2019/07/30 13:50:28 by sazalee          ###   ########.fr       */
+/*   Created: 2019/07/13 16:34:51 by sazalee           #+#    #+#             */
+/*   Updated: 2019/07/30 17:07:54 by tstripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fillit.h"
 
-int ft_check_c(char *str, int i)
+int	ft_check_c(char *str, int i)
 {
 	int grate;
 	int pointer;
@@ -20,6 +20,9 @@ int ft_check_c(char *str, int i)
 	int carry;
 
 	index = 0;
+	grate = 0;
+	pointer = 0;
+	carry = 0;
 	while (str[index])
 	{
 		if (str[index] == '#')
@@ -33,12 +36,12 @@ int ft_check_c(char *str, int i)
 		index++;
 	}
 	if (grate == 4 && pointer == 12 &&
-			((i == number - 1 && carry == 3) || carry == 4))
+			((i == g_tetrinumber - 1 && carry == 3) || carry == 4))
 		return (1);
 	return (0);
 }
 
-int ft_check_l(char *str)
+int	ft_check_l(char *str)
 {
 	int index;
 	int flag;
@@ -58,7 +61,7 @@ int ft_check_l(char *str)
 		{
 			if (str[index])
 				return (0);
-			break ;//return (1);
+			break ;
 		}
 		index++;
 		flag++;
@@ -66,59 +69,24 @@ int ft_check_l(char *str)
 	return (1);
 }
 
-int ft_height_c(char *str)
+int	ft_check_s(char *str)
 {
-	int index;
-	int counter;
+	int height;
+	int width;
 
-	index = 0;
-	counter = 0;
-	while (str[index])
+	height = ft_height_c(str);
+	width = ft_width_c(str);
+	if ((height == 1 && width == 4) || (width == 1 && height == 4) ||
+			(height == 3 && width == 2) || (width == 3 && height == 2) ||
+			(height == 2 && width == 2))
 	{
-		while(str[index] && str[index] != '\n')
-		{
-			if (str[index] == '#')
-			{
-				counter++;
-				while (str[index] && str[index] != '\n')
-					index++;
-				break ;
-			}
-			index++;
-		}
-		if (!str[index])
-			break ;
-		index++;
+		if (ft_neighbors_c(str, height, width))
+			return (1);
 	}
-	return (counter);
+	return (0);
 }
 
-int ft_width_c(char *str)
-{
-	int index;
-	int counter;
-	int flag;
-
-	counter = 0;
-	flag = 1;
-	while (flag < 5)
-	{
-		index = 0;
-		while (index < 4)
-		{
-			if (str[flag + 5 * index - 1] == '#')
-			{
-				counter++;
-				break;
-			}
-			index++;
-		}
-		flag++;
-	}
-	return (counter);
-}
-
-int check(char **tetriminos)
+int	check(char **tetriminos)
 {
 	int i;
 
@@ -126,11 +94,15 @@ int check(char **tetriminos)
 	while (tetriminos[i])
 	{
 		if (ft_check_c(tetriminos[i], i))
+		{
 			if (ft_check_l(tetriminos[i]))
+			{
 				if (!ft_check_s(tetriminos[i]))
 					return (0);
+			}
 			else
 				return (0);
+		}
 		else
 			return (0);
 		i++;
