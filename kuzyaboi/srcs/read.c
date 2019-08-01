@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 12:39:00 by sazalee           #+#    #+#             */
-/*   Updated: 2019/07/30 17:08:04 by tstripeb         ###   ########.fr       */
+/*   Updated: 2019/08/01 16:50:45 by tstripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,8 @@ char		**ft_read(char *av)
 	while ((count = read(fd, buf, BUFF_SIZE)) != 0)
 		buf[count] = '\0';
 	g_tetrinumber = counter_of_tetriminos(buf);
-	if (!(base = (char **)malloc(sizeof(char) * 21 * (g_tetrinumber + 1))))
+	if (!(base = (char **)malloc(sizeof(char *) *
+					(counter_of_tetriminos(buf) + 1))))
 		return (NULL);
 	if (format(buf) == 0)
 		return (NULL);

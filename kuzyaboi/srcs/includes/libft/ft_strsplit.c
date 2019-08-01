@@ -6,7 +6,7 @@
 /*   By: tstripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 19:39:39 by tstripeb          #+#    #+#             */
-/*   Updated: 2019/04/26 16:28:13 by tstripeb         ###   ########.fr       */
+/*   Updated: 2019/08/01 15:29:03 by tstripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static char		**ft_error_str(char **str, int jndex)
 		free(str[jndex]);
 		jndex--;
 	}
-	str[0] = NULL;
+	str[0] = NULL;//free(str[0]);
 	return (str);
 }
 
