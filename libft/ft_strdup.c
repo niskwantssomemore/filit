@@ -1,44 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/30 12:30:01 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/01 12:36:17 by sazalee          ###   ########.fr       */
+/*   Created: 2019/04/05 15:59:37 by sazalee           #+#    #+#             */
+/*   Updated: 2019/05/05 16:54:28 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "libft.h"
 
-void	ft_error(void)
+char	*ft_strdup(const char *s1)
 {
-	write(1, ERROR, 6);
-}
+	char	*copy;
+	int		length;
+	int		check;
 
-int		main(int ac, char **av)
-{
-	t_tetris	*begin;
-	char		**base;
-
-	begin = NULL;
-	base = NULL;
-	if (ac != 2)
+	length = 0;
+	while (s1[length])
+		length++;
+	if (!(copy = malloc(sizeof(char) * (length + 1))))
+		return (NULL);
+	check = 0;
+	while (s1[check])
 	{
-		ft_error();
-		return (-1);
+		copy[check] = s1[check];
+		check++;
 	}
-	if ((base = ft_read(av[1])) == NULL)
-	{
-		ft_error();
-		return (-1);
-	}
-	if (!(check(base)))
-	{
-		ft_error();
-		фритайм(base, g_tetrinumber + 1);
-		return (-1);
-	}
-	begin = addtetri(base);
+	copy[check] = '\0';
+	return (copy);
 }

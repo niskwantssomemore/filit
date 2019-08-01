@@ -1,44 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/30 12:30:01 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/01 12:36:17 by sazalee          ###   ########.fr       */
+/*   Created: 2019/04/12 15:55:55 by sazalee           #+#    #+#             */
+/*   Updated: 2019/04/17 18:15:26 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "libft.h"
 
-void	ft_error(void)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	write(1, ERROR, 6);
-}
+	char	*res;
+	size_t	length;
+	int		x;
+	int		y;
 
-int		main(int ac, char **av)
-{
-	t_tetris	*begin;
-	char		**base;
-
-	begin = NULL;
-	base = NULL;
-	if (ac != 2)
+	length = 0;
+	if (!s1 || !s2)
+		return (NULL);
+	length = ft_strlen(s1) + ft_strlen(s2);
+	if (!(res = (char *)malloc(sizeof(char) * (length + 1))))
+		return (NULL);
+	x = 0;
+	while (s1[x])
 	{
-		ft_error();
-		return (-1);
+		res[x] = s1[x];
+		x++;
 	}
-	if ((base = ft_read(av[1])) == NULL)
+	y = 0;
+	while (s2[y])
 	{
-		ft_error();
-		return (-1);
+		res[x + y] = s2[y];
+		y++;
 	}
-	if (!(check(base)))
-	{
-		ft_error();
-		фритайм(base, g_tetrinumber + 1);
-		return (-1);
-	}
-	begin = addtetri(base);
+	res[x + y] = '\0';
+	return (res);
 }

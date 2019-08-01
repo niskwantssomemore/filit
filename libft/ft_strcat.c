@@ -1,44 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/30 12:30:01 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/01 12:36:17 by sazalee          ###   ########.fr       */
+/*   Created: 2019/04/06 13:22:31 by sazalee           #+#    #+#             */
+/*   Updated: 2019/05/06 12:54:12 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "libft.h"
 
-void	ft_error(void)
+char	*ft_strcat(char *s1, const char *s2)
 {
-	write(1, ERROR, 6);
-}
+	int x;
+	int y;
 
-int		main(int ac, char **av)
-{
-	t_tetris	*begin;
-	char		**base;
-
-	begin = NULL;
-	base = NULL;
-	if (ac != 2)
+	x = 0;
+	while (s1[x])
+		x++;
+	y = 0;
+	while (s2[y])
 	{
-		ft_error();
-		return (-1);
+		s1[x] = s2[y];
+		x++;
+		y++;
 	}
-	if ((base = ft_read(av[1])) == NULL)
-	{
-		ft_error();
-		return (-1);
-	}
-	if (!(check(base)))
-	{
-		ft_error();
-		фритайм(base, g_tetrinumber + 1);
-		return (-1);
-	}
-	begin = addtetri(base);
+	s1[x] = '\0';
+	return (s1);
 }

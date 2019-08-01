@@ -1,44 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/30 12:30:01 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/01 12:36:17 by sazalee          ###   ########.fr       */
+/*   Created: 2019/04/10 14:19:34 by sazalee           #+#    #+#             */
+/*   Updated: 2019/04/17 17:38:27 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "libft.h"
 
-void	ft_error(void)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	write(1, ERROR, 6);
-}
+	unsigned char	*temp1;
+	unsigned char	*temp2;
+	size_t			count;
 
-int		main(int ac, char **av)
-{
-	t_tetris	*begin;
-	char		**base;
-
-	begin = NULL;
-	base = NULL;
-	if (ac != 2)
+	temp1 = (unsigned char *)s1;
+	temp2 = (unsigned char *)s2;
+	if (!temp1 && !temp2 && !n)
+		return (0);
+	count = 0;
+	while (count < n)
 	{
-		ft_error();
-		return (-1);
+		if (temp1[count] != temp2[count])
+			return (temp1[count] - temp2[count]);
+		count++;
 	}
-	if ((base = ft_read(av[1])) == NULL)
-	{
-		ft_error();
-		return (-1);
-	}
-	if (!(check(base)))
-	{
-		ft_error();
-		фритайм(base, g_tetrinumber + 1);
-		return (-1);
-	}
-	begin = addtetri(base);
+	return (0);
 }

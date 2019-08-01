@@ -1,44 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/30 12:30:01 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/01 12:36:17 by sazalee          ###   ########.fr       */
+/*   Created: 2019/04/10 15:06:36 by sazalee           #+#    #+#             */
+/*   Updated: 2019/04/17 18:09:01 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "libft.h"
 
-void	ft_error(void)
+void	ft_striter(char *s, void (*f)(char *))
 {
-	write(1, ERROR, 6);
-}
-
-int		main(int ac, char **av)
-{
-	t_tetris	*begin;
-	char		**base;
-
-	begin = NULL;
-	base = NULL;
-	if (ac != 2)
+	if (s && f)
 	{
-		ft_error();
-		return (-1);
+		while (*s)
+		{
+			f(s++);
+		}
 	}
-	if ((base = ft_read(av[1])) == NULL)
-	{
-		ft_error();
-		return (-1);
-	}
-	if (!(check(base)))
-	{
-		ft_error();
-		фритайм(base, g_tetrinumber + 1);
-		return (-1);
-	}
-	begin = addtetri(base);
 }

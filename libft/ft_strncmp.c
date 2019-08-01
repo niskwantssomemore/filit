@@ -1,44 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/30 12:30:01 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/01 12:36:17 by sazalee          ###   ########.fr       */
+/*   Created: 2019/04/04 14:39:41 by sazalee           #+#    #+#             */
+/*   Updated: 2019/05/05 16:49:04 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "libft.h"
 
-void	ft_error(void)
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	write(1, ERROR, 6);
-}
+	size_t count;
 
-int		main(int ac, char **av)
-{
-	t_tetris	*begin;
-	char		**base;
-
-	begin = NULL;
-	base = NULL;
-	if (ac != 2)
+	if (n == 0)
+		return (0);
+	count = 0;
+	while (s1[count] == s2[count] && (count < (n - 1)))
 	{
-		ft_error();
-		return (-1);
+		count++;
+		if (s1[count] == '\0' && s2[count] == '\0')
+			return (0);
 	}
-	if ((base = ft_read(av[1])) == NULL)
-	{
-		ft_error();
-		return (-1);
-	}
-	if (!(check(base)))
-	{
-		ft_error();
-		фритайм(base, g_tetrinumber + 1);
-		return (-1);
-	}
-	begin = addtetri(base);
+	return ((unsigned char)s1[count] - (unsigned char)s2[count]);
 }

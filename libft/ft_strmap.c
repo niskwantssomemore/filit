@@ -1,44 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/30 12:30:01 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/01 12:36:17 by sazalee          ###   ########.fr       */
+/*   Created: 2019/04/12 15:12:55 by sazalee           #+#    #+#             */
+/*   Updated: 2019/04/17 18:10:35 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "libft.h"
 
-void	ft_error(void)
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	write(1, ERROR, 6);
-}
+	char	*result;
+	int		count;
 
-int		main(int ac, char **av)
-{
-	t_tetris	*begin;
-	char		**base;
-
-	begin = NULL;
-	base = NULL;
-	if (ac != 2)
+	if (!s || !f)
+		return (0);
+	if (!(result = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1))))
+		return (NULL);
+	count = 0;
+	while (s[count])
 	{
-		ft_error();
-		return (-1);
+		result[count] = f(s[count]);
+		count++;
 	}
-	if ((base = ft_read(av[1])) == NULL)
-	{
-		ft_error();
-		return (-1);
-	}
-	if (!(check(base)))
-	{
-		ft_error();
-		фритайм(base, g_tetrinumber + 1);
-		return (-1);
-	}
-	begin = addtetri(base);
+	result[count] = '\0';
+	return (result);
 }

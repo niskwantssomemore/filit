@@ -1,44 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/30 12:30:01 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/01 12:36:17 by sazalee          ###   ########.fr       */
+/*   Created: 2019/04/05 17:16:30 by sazalee           #+#    #+#             */
+/*   Updated: 2019/04/17 18:21:30 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "libft.h"
 
-void	ft_error(void)
+void	ft_putnbr(int n)
 {
-	write(1, ERROR, 6);
-}
-
-int		main(int ac, char **av)
-{
-	t_tetris	*begin;
-	char		**base;
-
-	begin = NULL;
-	base = NULL;
-	if (ac != 2)
+	if (n == -2147483648)
 	{
-		ft_error();
-		return (-1);
+		ft_putchar('-');
+		n = n + 1932735284;
+		n = -1 * n;
+		ft_putnbr(n / 10);
+		ft_putchar((n % 10) + '0');
+		ft_putchar('8');
 	}
-	if ((base = ft_read(av[1])) == NULL)
+	else
 	{
-		ft_error();
-		return (-1);
+		if (n < 0)
+		{
+			ft_putchar('-');
+			n = -1 * n;
+		}
+		if (n >= 10)
+			ft_putnbr(n / 10);
+		ft_putchar((n % 10) + '0');
 	}
-	if (!(check(base)))
-	{
-		ft_error();
-		фритайм(base, g_tetrinumber + 1);
-		return (-1);
-	}
-	begin = addtetri(base);
 }
