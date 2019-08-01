@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 14:23:36 by sazalee           #+#    #+#             */
-/*   Updated: 2019/07/30 14:27:34 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/08/01 13:32:20 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_index_plus_one(char *str, int index, int counter, int flag)
 	if (str[index + 5] == '#')
 		counter = ft_index_plus_five(str, index + 5, counter + 2, flag);
 	if (str[index - 5] == '#')
-		counter = ft_index_minus_five(str, index - 5, counter + 2, flag);
+		counter = ft_index_minu_five(str, index - 5, counter + 2, flag);
 	return (counter);
 }
 
@@ -38,7 +38,7 @@ int	ft_index_minus_one(char *str, int index, int counter, int flag)
 	if (str[index + 5] == '#')
 		counter = ft_index_plus_five(str, index + 5, counter + 2, flag);
 	if (str[index - 5] == '#')
-		counter = ft_index_minus_five(str, index - 5, counter + 2, flag);
+		counter = ft_index_minu_five(str, index - 5, counter + 2, flag);
 	return (counter);
 }
 
@@ -53,11 +53,11 @@ int	ft_index_plus_five(char *str, int index, int counter, int flag)
 	if (str[index - 1] == '#')
 		counter = ft_index_minus_one(str, index - 1, counter + 2, flag);
 	if (str[index - 5] == '#')
-		counter = ft_index_minus_five(str, index - 5, counter + 2, flag);
+		counter = ft_index_minu_five(str, index - 5, counter + 2, flag);
 	return (counter);
 }
 
-int	ft_index_minus_five(char *str, int index, int counter, int flag)
+int	ft_index_minu_five(char *str, int index, int counter, int flag)
 {
 	if (counter == 6 && flag != 1)
 		return (counter);
