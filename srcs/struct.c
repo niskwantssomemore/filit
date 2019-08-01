@@ -36,7 +36,7 @@ t_tetris	*addtetri(char **base)
 	count = 1;
 	begin = NULL;
 	temp = NULL;
-	begin = createtetri(ft_strsplit(base[0], '\n'), count);
+	begin = createtetri(ft_strsplit(base[0], '\n'), 0);
 	temp = begin;
 	while (count < g_tetrinumber)
 	{
