@@ -6,10 +6,13 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 13:53:16 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/01 13:53:38 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/08/03 13:22:30 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
 
-
+char	**solve(t_tetris *begin, int ressize, char **finalbase)
+{
+	leftup(begin);
+}

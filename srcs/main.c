@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 12:30:01 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/01 14:09:12 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/08/03 13:28:28 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,23 @@ void	ft_error(void)
 	write(1, "error\n", 6);
 }
 
+void	ft_freetime(char **base, int counter)
+{
+	counter = counter - 1;
+	while (counter >= 0)
+	{
+		ft_strdel(&base[counter]);
+		counter--;
+	}
+	ft_strdel(base);
+}
+
 int		main(int ac, char **av)
 {
 	t_tetris	*begin;
 	char		**base;
+	char		**finalb;
+	int			finalsize;
 
 	begin = NULL;
 	base = NULL;
@@ -37,9 +50,11 @@ int		main(int ac, char **av)
 	if (!(check(base)))
 	{
 		ft_error();
-		фритайм(base, g_tetrinumber + 1);
+		ft_freetime(base, g_tetrinumber + 1);
 		return (-1);
 	}
 	begin = addtetri(base);
-	фритайм(base, g_tetrinumber + 1);
+	ft_freetime(base, g_tetrinumber + 1);
+	finalsize = ressize();
+	finalb = finalbase(finalsize);
 }
