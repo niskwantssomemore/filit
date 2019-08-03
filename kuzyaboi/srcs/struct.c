@@ -6,11 +6,12 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 12:27:06 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/01 16:50:49 by tstripeb         ###   ########.fr       */
+/*   Updated: 2019/08/03 14:59:24 by tstripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fillit.h"
+#include <stdio.h>
 
 t_tetris	*createtri(char **tetrimino, int numord)
 {
@@ -46,4 +47,47 @@ t_tetris	*addtetri(char **base)
 	}
 	temp->next = NULL;
 	return (begin);
+}
+
+int			ressize(void)
+{
+	int size;
+	int k;
+	int power;
+	
+	size = g_tetrinumber * 4;
+	power = 0;
+	k = 1;
+	while (size > 0)
+	{
+		size -= k;
+		k = k + 2;
+		power++;
+	}
+	return (power);
+}
+
+char		**finalbase(int size)
+{
+	char **base;
+	int index;
+	int jndex;
+
+	index = 0;
+	if (!(base = (char **)malloc(sizeof(char *) * size)))
+		return (0);
+	while (index < size)
+	{
+		jndex = 0;
+		if (!(base[index] = (char *)malloc(sizeof(char) * size + 1)))
+			return (0);
+		while (jndex < size)
+		{
+			base[index][jndex] = '.';
+			jndex++;
+		}
+		index++;
+	}
+	base[index] = NULL;
+	return (base);
 }

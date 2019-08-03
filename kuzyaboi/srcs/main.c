@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 12:30:01 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/01 16:49:33 by tstripeb         ###   ########.fr       */
+/*   Updated: 2019/08/03 14:59:21 by tstripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,21 @@ void	ft_error(void)
 
 void	ft_freetime(char **base, int counter)
 {
-	while (counter > 0)
+	while (counter >= 0)
 	{
-//		printf("counter = %d\n", counter);
-		free(base[counter]);
+		ft_strdel(&base[counter]);
 		counter--;
 	}
-	free(base[0]);
+	ft_strdel(base);
 }
 
 int		main(int ac, char **av)
 {
 	t_tetris	*begin;
 	char		**base;
+	int			size;
+	char		**f_base;
 	int index;
-//	char **tetris;
 
 	index = 0;
 	begin = NULL;
@@ -52,28 +52,13 @@ int		main(int ac, char **av)
 	if (!(check(base)))
 	{
 		ft_error();
-//		ft_freetime(base, g_tetrinumber);
+		ft_freetime(base, g_tetrinumber + 1);
 		return (-1);
 	}
+	begin  = addtetri(base);
 	ft_freetime(base, g_tetrinumber);
-	printf("g_n = %d\n", g_tetrinumber);
-	while (index < g_tetrinumber)
-	{
-		printf("base[%d] = %s\n", index, base[index]);
-		index++;
-	}
-//	begin = addtetri(base);
-/*	while (begin)
-	{
-		tetris = begin->tetrimino;
-		while (tetris[index])
-		{
-			printf("tetris[%d] = %s\n", index, tetris[index]);
-			index++;
-		}
-		index = 0;
-		printf("alphabet = %d\n", begin->alphabet);
-		begin = begin->next;
-	}*/
+	size = ressize();
+	if (!(f_base = finalbase(size)))
+		return (-1);//osvobodit pamyat v struct
 	return (0);
 }

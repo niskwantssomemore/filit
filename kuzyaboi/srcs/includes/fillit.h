@@ -6,7 +6,7 @@
 /*   By: tstripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 16:17:42 by tstripeb          #+#    #+#             */
-/*   Updated: 2019/08/01 16:08:00 by tstripeb         ###   ########.fr       */
+/*   Updated: 2019/08/03 13:34:40 by tstripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,7 @@ char		**fillbase(char **base, char *buf);
 char		**ft_read(char *av);
 t_tetris	*createtri(char **tetrimino, int numord);
 t_tetris	*addtetri(char **base);
+int			ressize(void);
+char		**finalbase(int size);
 
 #endif
