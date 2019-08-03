@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 12:53:03 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/03 13:29:18 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/08/03 13:52:19 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,10 @@ int			xmin(char **field)
 
 t_tetris	*leftup(t_tetris *begin)
 {
-	xmin();
-	ymin();
+	t_tetris	*temp;
+	int			x;
+	int			y;
+
+	x = xmin();
+	y = ymin();
 }
