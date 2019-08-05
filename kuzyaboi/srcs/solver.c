@@ -3,14 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tstripeb <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/05 13:48:15 by tstripeb          #+#    #+#             */
-/*   Updated: 2019/08/05 15:06:25 by tstripeb         ###   ########.fr       */
+/*   Created: 2019/08/01 13:53:16 by sazalee           #+#    #+#             */
+/*   Updated: 2019/08/05 15:49:57 by tstripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/fillit.h"
+#include "../includes/fillit.h"
+
+char	**cleaner(t_tetris *begin, char **finalb)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (finalb[x] != NULL)
+	{
+		while (finalb[x][y] != '\0')
+		{
+			if (finalb[x][y] == begin->alphabet)
+				finalb[x][y] = '.';
+			y++;
+		}
+		y = 0;
+		x++;
+	}
+	return (finalb);
+}
+
+int		finder(t_tetris *begin, int finalsize, char **finalb)
+{
+
+}
 
 int tester(t_tetris *begin, char **finalbase, int finalsize)
 {
@@ -54,4 +80,15 @@ char **adder(t_tetris *begin, char **finalbase)
 		i++;
 	}
 	return (finalbase);
+}
+
+char	**solve(t_tetris *begin, int finalsize, char **finalb)
+{
+	leftup(begin);
+	while (finder(begin, finalsize, finalb) == 0)
+	{
+		freetime(finalb, finalsize);
+		finalb = finalbase(finalsize);
+	}
+	return (finalb);
 }

@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 12:30:01 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/05 12:59:50 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/08/05 16:29:59 by tstripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int		main(int ac, char **av)
 	char		**base;
 	char		**finalb;
 	int			finalsize;
+	int index;
 
 	begin = NULL;
 	base = NULL;
@@ -53,6 +54,16 @@ int		main(int ac, char **av)
 		return (-1);
 	}
 	begin = addtetri(base);
+	while (begin)
+	{
+		index = 0;
+		while (index < g_tetri_number)
+		{
+			printf("%s\n", begin->tetrimino[index]);
+			index++;
+		}
+		begin = begin->next;
+	}
 	ft_freetime(base, g_tetrinumber);
 	finalsize = ressize();
 	finalb = finalbase(finalsize);

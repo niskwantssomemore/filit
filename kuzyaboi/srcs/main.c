@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 12:30:01 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/03 15:02:35 by tstripeb         ###   ########.fr       */
+/*   Updated: 2019/08/05 16:46:13 by tstripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,47 @@ void	ft_freetime(char **base, int counter)
 	ft_strdel(base);
 }
 
+void result_of_project(char **field, int finalsize)
+{
+	int index;
+	int jndex;
+
+	index = 0;
+	while (index < finalsize)
+	{
+		jndex = 0;
+		while (jndex < finalsize)
+		{
+			ft_putchar(field[index][jndex]);
+			jndex++;
+		}
+		ft_putchar('\n');
+		index++;
+	}
+}
+
+int read_check_write(char *av, char **base, t_tetris **begin)
+{
+	int index;
+
+	if ((base = ft_read(av)) == NULL || !(check(base)))
+	{
+		ft_error();
+		ft_freetime(base, g_tetrinumber + 1);
+		return (0);
+	}
+	*begin  = addtetri(base);
+	ft_freetime(base, g_tetrinumber);
+	return (1);
+}
+
 int		main(int ac, char **av)
 {
 	t_tetris	*begin;
 	char		**base;
-	int			size;
-	char		**f_base;
-	int index;
+	int			finalsize;
+	char		**finalb;
 
-	index = 0;
 	begin = NULL;
 	base = NULL;
 	if (ac != 2)
@@ -44,21 +76,9 @@ int		main(int ac, char **av)
 		ft_error();
 		return (-1);
 	}
-	if ((base = ft_read(av[1])) == NULL)
-	{
-		ft_error();
+	if (!(read_check_write(av[1], base, &begin)))
 		return (-1);
-	}
-	if (!(check(base)))
-	{
-		ft_error();
-		ft_freetime(base, g_tetrinumber + 1);
-		return (-1);
-	}
-	begin  = addtetri(base);
-	ft_freetime(base, g_tetrinumber);
-	size = ressize();
-	if (!(f_base = finalbase(size)))
+	finalsize = ressize();
+	if (!(finalb = finalbase(finalsize)))
 		return (-1);//osvobodit pamyat v struct
-	return (0);
 }
