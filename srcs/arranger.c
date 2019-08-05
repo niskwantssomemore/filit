@@ -6,11 +6,21 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 12:53:03 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/03 13:52:19 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/08/05 12:47:00 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
+
+char		**left(int xmin, char **field)
+{
+
+}
+
+char		**up(int ymin, char **field)
+{
+
+}
 
 int			ymin(char **field)
 {
@@ -64,6 +74,14 @@ t_tetris	*leftup(t_tetris *begin)
 	int			x;
 	int			y;
 
-	x = xmin();
-	y = ymin();
+	temp = begin;
+	while (temp)
+	{
+		x = xmin(temp->tetrimino);
+		left(x, temp->tetrimino);
+		y = ymin(temp->tetrimino);
+		up(y, temp->tetrimino);
+		temp = temp->next;
+	}
+	return (begin);
 }

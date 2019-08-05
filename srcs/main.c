@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 12:30:01 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/03 13:28:28 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/08/05 12:59:50 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	ft_error(void)
 
 void	ft_freetime(char **base, int counter)
 {
-	counter = counter - 1;
 	while (counter >= 0)
 	{
 		ft_strdel(&base[counter]);
@@ -50,11 +49,12 @@ int		main(int ac, char **av)
 	if (!(check(base)))
 	{
 		ft_error();
-		ft_freetime(base, g_tetrinumber + 1);
+		ft_freetime(base, g_tetrinumber);
 		return (-1);
 	}
 	begin = addtetri(base);
-	ft_freetime(base, g_tetrinumber + 1);
+	ft_freetime(base, g_tetrinumber);
 	finalsize = ressize();
 	finalb = finalbase(finalsize);
+	solve(begin, finalsize, finalb);
 }
