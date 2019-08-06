@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/13 16:34:51 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/06 13:34:36 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/08/06 14:04:56 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ int	ft_check_c(char *str, int i)
 	int carry;
 
 	index = 0;
+	grate = 0;
+	pointer = 0;
+	carry = 0;
 	while (str[index])
 	{
 		if (str[index] == '#')
@@ -73,12 +76,13 @@ int	ft_check_s(char *str)
 
 	height = ft_height_c(str);
 	width = ft_width_c(str);
-	if ((height == 1 && width != 4) || (width == 1 && height != 4) ||
-			(height == 3 && width != 2) || (width == 3 && height != 2) ||
-			(height == 2 && width != 2) || (width == 2 && height != 2))
-		return (0);
-	if (ft_neighbors_c(str, height, width))
-		return (1);
+	if ((height == 1 && width == 4) || (width == 1 && height == 4) ||
+			(height == 3 && width == 2) || (width == 3 && height == 2) ||
+			(height == 2 && width == 2))
+	{
+		if (ft_neighbors_c(str, height, width))
+			return (1);
+	}
 	return (0);
 }
 

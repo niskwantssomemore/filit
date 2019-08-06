@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 14:11:31 by sazalee           #+#    #+#             */
-/*   Updated: 2019/07/30 14:19:24 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/08/06 14:09:51 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ int	ft_neighbors_c(char *str, int height, int width)
 				flag = 1;
 				return ((threeinarow(str, index, counter, flag) == 8) ? 1 : 0);
 			}
-			else if (str[index] == '#' && ((height == 1 && width == 3) ||
-						(width == 1 && height == 3)))
+			else if (str[index] == '#' && ((height == 2 && width == 3) ||
+						(width == 2 && height == 3)))
 				return ((threeinarow(str, index, counter, flag) == 6) ? 1 : 0);
 			index++;
 		}
