@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 13:53:16 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/06 13:30:43 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/08/06 14:28:44 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int		tester(t_tetris *begin, char **finalbase, int finalsize)
 		j = 0;
 		while (j < 4)
 		{
-			if (begin->tetrimino[i][j] == '#' && (begin->x + i >= finalsize
-						|| begin->y + j >= finalsize)
-					&& (finalbase[begin->x + i][begin->y + j] >= 'A' &&
-						finalbase[begin->x + i][begin->y + j] <= 'Z'))
+			if ((begin->tetrimino[i][j] == '#') && (begin->x + j >= finalsize
+						|| begin->y + i >= finalsize)
+					&& (finalbase[begin->y + i][begin->x + j] >= 'A' &&
+						finalbase[begin->y + i][begin->x + j] <= 'Z'))
 				return (0);
 			j++;
 		}
