@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 12:27:06 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/05 13:59:08 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/08/06 13:37:13 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ t_tetris	*addtetri(char **base)
 	count = 1;
 	begin = NULL;
 	temp = NULL;
-	begin = createtetri(ft_strsplit(base[0], '\n'), 0);
+	begin = createtri(ft_strsplit(base[0], '\n'), 0);
 	temp = begin;
 	while (count < g_tetrinumber)
 	{
-		temp->next = createtetri(ft_strsplit(base[count], '\n'), count);
+		temp->next = createtri(ft_strsplit(base[count], '\n'), count);
 		temp = temp->next;
 		count++;
 	}

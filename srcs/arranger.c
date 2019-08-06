@@ -6,20 +6,61 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 12:53:03 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/05 12:47:00 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/08/06 13:13:16 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
 
-char		**left(int xmin, char **field)
+int			xmin(char **field)
 {
+	int x;
+	int y;
+	int targetx;
 
+	x = 0;
+	y = 0;
+	targetx = 4;
+	while (x < 4)
+	{
+		while (field[x][y] != '#' && field[x][y] != '\0')
+			y++;
+		if (y < targetx)
+			targetx = y;
+		else
+			targetx = targetx;
+		y = 0;
+		x++;
+	}
+	return (targetx);
 }
 
-char		**up(int ymin, char **field)
+char		**left(int xmin, char **field)
 {
+	int	temp;
+	int	x;
+	int	y;
 
+	temp = 0;
+	x = 0;
+	y = 0;
+	while (x < 4)
+	{
+		while (field[x][y + xmin] != '\0')
+		{
+			field[x][y] = field[x][y + xmin];
+			y++;
+		}
+		temp = xmin;
+		while (temp > 0)
+		{
+			field[x][4 - temp] = '.';
+			temp--;
+		}
+		y = 0;
+		x++;
+	}
+	return (field);
 }
 
 int			ymin(char **field)
@@ -45,27 +86,22 @@ int			ymin(char **field)
 	return (targety);
 }
 
-int			xmin(char **field)
+char		**up(int ymin, char **field)
 {
-	int	x;
-	int	y;
-	int	targetx;
+	int count;
 
-	x = 0;
-	y = 0;
-	targetx = 4;
-	while (x < 4)
+	count = 0;
+	while (count + ymin < 4)
 	{
-		while (field[x][y] != '#' && field[x][y] != '\0')
-			y++;
-		if (y < targetx)
-			targetx = y;
-		else
-			targetx = targetx;
-		y = 0;
-		x++;
+		field[count] = field[count + ymin];
+		count++;
 	}
-	return (targetx);
+	while (count < 4 && ymin > 0)
+	{
+		field[count] = "....\0";
+		count++;
+	}
+	return (field);
 }
 
 t_tetris	*leftup(t_tetris *begin)

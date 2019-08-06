@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/13 16:34:51 by sazalee           #+#    #+#             */
-/*   Updated: 2019/07/30 14:11:59 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/08/06 13:34:36 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_check_c(char *str, int i)
 		index++;
 	}
 	if (grate == 4 && pointer == 12 &&
-			((i == number - 1 && carry == 3) || carry == 4))
+			((i == g_tetrinumber - 1 && carry == 3) || carry == 4))
 		return (1);
 	return (0);
 }
