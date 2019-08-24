@@ -82,8 +82,7 @@ int	ft_neighbors_c(char *str, int height, int width)
 				flag = 1;
 				return ((threeinarow(str, index, counter, flag) == 8) ? 1 : 0);
 			}
-			else if (str[index] == '#' && ((height == 2 && width == 3) ||
-						(width == 2 && height == 3)))
+			else if (str[index] == '#')
 				return ((threeinarow(str, index, counter, flag) == 6) ? 1 : 0);
 			index++;
 		}
