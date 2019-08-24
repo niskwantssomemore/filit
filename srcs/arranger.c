@@ -27,8 +27,6 @@ int			xmin(char **field)
 			y++;
 		if (y < targetx)
 			targetx = y;
-		else
-			targetx = targetx;
 		y = 0;
 		x++;
 	}

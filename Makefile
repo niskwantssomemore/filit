@@ -10,6 +10,30 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME - fillit
+NAME = fillit
 
-SRCS = main.c checker.c checkercont.c neighborscont.c read.c struct.c solver.c
+SRCS = ./srcs/*.c
+
+OBJS = ./srcs/*.o
+
+HEAD = ./includes/fillit.h
+
+FLAGS = -Wall -Wextra -Werror
+
+LIBFT = libft/
+
+all: $(NAME)
+
+$(NAME):
+	make -C $(LIBFT)
+	gcc $(FLAGS) -o $(NAME) $(SRCS) -I $(HEAD) -L. libft/libft.a
+
+clean:
+	/bin/rm -f $(OBJS)
+	make -C $(LIBFT) clean
+
+fclean: clean
+	/bin/rm -f $(NAME)
+	make -C $(LIBFT) fclean
+
+re: fclean all
