@@ -47,14 +47,12 @@ int			format(char *buf)
 	{
 		while (buf[x] != '\n' && buf[x] != '\0')
 			x++;
-		if (buf[x] == '\n')
-		{
-			x++;
+		if (buf[x++] == '\n')
 			y++;
-		}
 		if (y == 4)
 		{
-			if (buf[x] != '\0' && buf[x] != '\n')
+			if ((buf[x] != '\0' && buf[x] != '\n')
+				|| (buf[x + 1] == '\0' && buf[x] == '\n'))
 				return (0);
 			if (buf[x] == '\n')
 				x++;

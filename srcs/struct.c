@@ -73,7 +73,7 @@ char		**finalbase(int size)
 	int		jndex;
 
 	index = 0;
-	if (!(base = (char **)malloc(sizeof(char *) * size)))
+	if (!(base = (char **)malloc(sizeof(char *) * size + 1)))
 		return (0);
 	while (index < size)
 	{
