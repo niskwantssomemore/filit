@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 12:30:01 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/29 15:12:46 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/08/29 15:43:59 by tstripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,27 @@ void	result_of_project(char **finalb, int finalsize)
 	}
 }
 
+int read_check_write(char *av, char **base, t_tetris **begin)
+{
+	int index;
+
+	if ((base = ft_read(av)) == NULL || !(check(base)))
+	{
+		ft_error();
+		ft_freetime(base, g_tetrinumber + 1);
+		return (0);
+	}
+	*begin  = addtetri(base);
+	ft_freetime(base, g_tetrinumber);
+	return (1);
+}
+
 int		main(int ac, char **av)
 {
 	t_tetris	*begin;
 	char		**base;
-	char		**finalb;
 	int			finalsize;
+	char		**finalb;
 
 	begin = NULL;
 	base = NULL;
@@ -63,21 +78,10 @@ int		main(int ac, char **av)
 		ft_error();
 		return (-1);
 	}
-	if ((base = ft_read(av[1])) == NULL)
-	{
-		ft_error();
+	if (!(read_check_write(av[1], base, &begin)))
 		return (-1);
-	}
-	if (!(check(base)))
-	{
-		ft_error();
-		ft_freetime(base, g_tetrinumber);
-		return (-1);
-	}
-	begin = addtetri(base);
-	ft_freetime(base, g_tetrinumber + 1);
 	finalsize = ressize();
-	finalb = finalbase(finalsize);
+	if (!(finalb = finalbase(finalsize)))
+		return (-1);//osvobodit pamyat v struct
 	solve(begin, finalsize, finalb);
-	/*result_of_project(finalb, finalsize);*/
 }
