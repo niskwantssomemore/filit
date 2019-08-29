@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 16:18:09 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/06 13:29:09 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/08/29 14:42:13 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int				ft_width_c(char *str);
 int				ft_neighbors_c(char *str, int height, int width);
 void			ft_error(void);
 void			ft_freetime(char **base, int counter);
-void			result_of_project(char **field, int finalsize);
+void			result_of_project(char **finalb, int finalsize);
 int				ft_index_plus_one(char *str, int index, int counter, int flag);
 int				ft_index_minus_one(char *str, int index, int counter, int flag);
 int				ft_index_plus_five(char *str, int index, int counter, int flag);

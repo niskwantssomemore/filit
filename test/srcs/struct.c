@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 12:27:06 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/06 13:37:13 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/08/29 15:03:05 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ char		**finalbase(int size)
 			base[index][jndex] = '.';
 			jndex++;
 		}
+		base[index][jndex] = '\0';
 		index++;
 	}
 	base[index] = NULL;

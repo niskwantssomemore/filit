@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 12:30:01 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/06 12:55:57 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/08/29 15:12:46 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,18 @@ void	ft_error(void)
 
 void	ft_freetime(char **base, int counter)
 {
-	while (counter >= 0)
+	int flag;
+
+	flag = 0;
+	while (flag < counter)
 	{
-		ft_strdel(&base[counter]);
-		counter--;
+		ft_strdel(&base[flag]);
+		flag++;
 	}
 	ft_strdel(base);
 }
 
-void	result_of_project(char **field, int finalsize)
+void	result_of_project(char **finalb, int finalsize)
 {
 	int index;
 	int jndex;
@@ -38,7 +41,7 @@ void	result_of_project(char **field, int finalsize)
 		jndex = 0;
 		while (jndex < finalsize)
 		{
-			ft_putchar(field[index][jndex]);
+			ft_putchar(finalb[index][jndex]);
 			jndex++;
 		}
 		ft_putchar('\n');
@@ -72,9 +75,9 @@ int		main(int ac, char **av)
 		return (-1);
 	}
 	begin = addtetri(base);
-	ft_freetime(base, g_tetrinumber);
+	ft_freetime(base, g_tetrinumber + 1);
 	finalsize = ressize();
 	finalb = finalbase(finalsize);
 	solve(begin, finalsize, finalb);
-	result_of_project(finalb, finalsize);
+	/*result_of_project(finalb, finalsize);*/
 }

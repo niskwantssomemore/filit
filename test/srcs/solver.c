@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 13:53:16 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/18 14:47:34 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/08/29 15:12:26 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,6 @@ char	**solve(t_tetris *begin, int finalsize, char **finalb)
 		ft_freetime(finalb, finalsize);
 		finalb = finalbase(finalsize);
 	}
+	result_of_project(finalb, finalsize);
 	return (finalb);
 }
