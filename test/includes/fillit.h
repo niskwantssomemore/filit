@@ -37,6 +37,7 @@ char			**left(int xmin, char **field);
 int				ymin(char **field);
 char			**up(int ymin, char **field);
 t_tetris		*leftup(t_tetris *begin);
+int				read_check_checker(int ac, char *av, char **base, t_tetris **begin);
 int				ft_check_c(char *str, int i);
 int				ft_check_l(char *str);
 int				ft_check_s(char *str);

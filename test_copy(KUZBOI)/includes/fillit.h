@@ -54,6 +54,7 @@ int				ft_index_minu_five(char *str, int index, int counter, int flag);
 int				threeinarow(char *str, int index, int counter, int flag);
 int				counter_of_tetriminos(char *buf);
 int				format(char *buf);
+int 				read_check_write(char *av, char **base, t_tetris **begin);
 char			**fillbase(char **base, char *buf);
 char			**ft_read(char *av);
 int				tester(t_tetris *begin, char **finalbase, int finalsize);

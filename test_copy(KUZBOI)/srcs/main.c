@@ -51,8 +51,6 @@ void	result_of_project(char **finalb, int finalsize)
 
 int read_check_write(char *av, char **base, t_tetris **begin)
 {
-	int index;
-
 	if ((base = ft_read(av)) == NULL || !(check(base)))
 	{
 		ft_error();

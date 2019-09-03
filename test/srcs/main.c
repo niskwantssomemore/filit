@@ -49,7 +49,25 @@ void	result_of_project(char **finalb, int finalsize)
 	}
 }
 
-int		main(int ac, char **av)
+int	read_check_checker(int ac, char *av, char **base, t_tetris **begin)
+{
+	if ((ac != 2) || ((base = ft_read(av)) == NULL))
+	{
+		ft_error();
+		return (0);
+	}
+	if (!(check(base)))
+	{
+		ft_error();
+		ft_freetime(base, g_tetrinumber);
+		return (0);
+	}
+	*begin = addtetri(base);
+	ft_freetime(base, g_tetrinumber + 1);
+	return (1);
+}
+
+int	main(int ac, char **av)
 {
 	t_tetris	*begin;
 	char		**base;
@@ -58,26 +76,9 @@ int		main(int ac, char **av)
 
 	begin = NULL;
 	base = NULL;
-	if (ac != 2)
-	{
-		ft_error();
+	if (!(read_check_checker(ac, av[1], base, &begin)))
 		return (-1);
-	}
-	if ((base = ft_read(av[1])) == NULL)
-	{
-		ft_error();
-		return (-1);
-	}
-	if (!(check(base)))
-	{
-		ft_error();
-		ft_freetime(base, g_tetrinumber);
-		return (-1);
-	}
-	begin = addtetri(base);
-	ft_freetime(base, g_tetrinumber + 1);
 	finalsize = ressize();
 	finalb = finalbase(finalsize);
 	solve(begin, finalsize, finalb);
-	/*result_of_project(finalb, finalsize);*/
 }
