@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 12:30:01 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/29 15:12:46 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/09/04 13:23:37 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,25 +49,25 @@ void	result_of_project(char **finalb, int finalsize)
 	}
 }
 
-int	read_check_checker(int ac, char *av, char **base, t_tetris **begin)
+int		read_check_checker(int c, char *v, char **b, t_tetris **beg)
 {
-	if ((ac != 2) || ((base = ft_read(av)) == NULL))
+	if ((c != 2) || ((b = ft_read(v)) == NULL) || (g_tetrinumber > 26))
 	{
 		ft_error();
 		return (0);
 	}
-	if (!(check(base)))
+	if (!(check(b)))
 	{
 		ft_error();
-		ft_freetime(base, g_tetrinumber);
+		ft_freetime(b, g_tetrinumber);
 		return (0);
 	}
-	*begin = addtetri(base);
-	ft_freetime(base, g_tetrinumber + 1);
+	*beg = addtetri(b);
+	ft_freetime(b, g_tetrinumber + 1);
 	return (1);
 }
 
-int	main(int ac, char **av)
+int		main(int ac, char **av)
 {
 	t_tetris	*begin;
 	char		**base;

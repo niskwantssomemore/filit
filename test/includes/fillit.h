@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 16:18:09 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/29 14:42:13 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/09/04 13:15:03 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char			**left(int xmin, char **field);
 int				ymin(char **field);
 char			**up(int ymin, char **field);
 t_tetris		*leftup(t_tetris *begin);
-int				read_check_checker(int ac, char *av, char **base, t_tetris **begin);
+int				read_check_checker(int c, char *v, char **b, t_tetris **beg);
 int				ft_check_c(char *str, int i);
 int				ft_check_l(char *str);
 int				ft_check_s(char *str);
