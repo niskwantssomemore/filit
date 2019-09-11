@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 16:18:09 by sazalee           #+#    #+#             */
-/*   Updated: 2019/09/04 16:49:10 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/09/08 16:15:31 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int				check(char **tetriminos);
 int				ft_height_c(char *str);
 int				ft_width_c(char *str);
 int				ft_neighbors_c(char *str, int height, int width);
+void			free_lst(t_tetris *begin);
 void			ft_structfree(t_tetris *tmp);
 void			ft_error(void);
 void			ft_freetime(char **base, int counter);

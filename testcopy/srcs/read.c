@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 12:39:00 by sazalee           #+#    #+#             */
-/*   Updated: 2019/09/04 16:42:53 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/09/11 18:15:35 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char		**fillbase(char **base, char *buf)
 	x = 0;
 	y = 0;
 	z = 0;
-	while (x < g_tetrinumber)
+	while (x < counter_of_tetriminos(buf))
 	{
 		if (!(base[x] = (char*)malloc(sizeof(char) * 20 + 1)))
 			return (NULL);

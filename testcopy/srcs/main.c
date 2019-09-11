@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 12:30:01 by sazalee           #+#    #+#             */
-/*   Updated: 2019/09/04 15:46:07 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/09/11 19:13:08 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,5 @@ int		main(int ac, char **av)
 	finalsize = ressize();
 	finalb = finalbase(finalsize);
 	solve(begin, finalsize, finalb);
+	free_lst(begin);
 }

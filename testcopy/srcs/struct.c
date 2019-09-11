@@ -6,45 +6,35 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 12:27:06 by sazalee           #+#    #+#             */
-/*   Updated: 2019/09/04 16:55:48 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/09/11 20:07:28 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
 
-void		ft_structfree(t_tetris *tmp)
+void		free_lst(t_tetris *begin)
 {
-	t_tetris	*begin;
-	int			index;
-
-	begin = tmp;
-	index = 0;
-	while (begin)
+	t_tetris	*ptr;
+	
+	while (begin != NULL)
 	{
-		while (begin->tetrimino[index])
-		{
-			free(begin->tetrimino[index]);
-			index++;
-		}
-		free(begin->tetrimino);
+		ptr = begin;
+		ft_freetime(begin->tetrimino, 4);
+		//ft_strdel(&begin->tetrimino[3]);
 		begin = begin->next;
-	}
-	begin = tmp;
-	while (tmp)
-	{
-		begin = begin->next;
-		free(tmp);
-		tmp = begin;
+		ft_memdel((void **)(&ptr));
 	}
 }
 
 t_tetris	*createtri(char **tetrimino, int numord)
 {
 	t_tetris	*addition;
-
+	
 	addition = NULL;
 	if (!(addition = (t_tetris*)malloc(sizeof(t_tetris))))
+	{
 		return (NULL);
+	}
 	addition->tetrimino = tetrimino;
 	addition->alphabet = 'A' + numord;
 	addition->x = 0;
@@ -66,11 +56,7 @@ t_tetris	*addtetri(char **base)
 	temp = begin;
 	while (count < g_tetrinumber)
 	{
-		if (!(temp->next = createtri(ft_strsplit(base[count], '\n'), count)))
-		{
-			ft_structfree(temp);
-			return (NULL);
-		}
+		temp->next = createtri(ft_strsplit(base[count], '\n'), count);
 		temp = temp->next;
 		count++;
 	}
