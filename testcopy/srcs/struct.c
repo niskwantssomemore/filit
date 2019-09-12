@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 12:27:06 by sazalee           #+#    #+#             */
-/*   Updated: 2019/09/11 20:07:28 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/09/12 17:40:08 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		free_lst(t_tetris *begin)
 	}
 }
 
-t_tetris	*createtri(char **tetrimino, int numord)
+t_tetris	*createtri(char *tetrimino, int numord)
 {
 	t_tetris	*addition;
 	
@@ -52,7 +52,7 @@ t_tetris	*addtetri(char **base)
 	count = 1;
 	begin = NULL;
 	temp = NULL;
-	begin = createtri(ft_strsplit(base[0], '\n'), 0);
+	begin = createtri(base[0], 0);
 	temp = begin;
 	while (count < g_tetrinumber)
 	{
