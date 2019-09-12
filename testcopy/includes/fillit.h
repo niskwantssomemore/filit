@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 16:18:09 by sazalee           #+#    #+#             */
-/*   Updated: 2019/09/08 16:15:31 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/09/12 17:50:48 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char			**adder(t_tetris *begin, char **finalbase);
 char			**cleaner(t_tetris *begin, char **finalb);
 int				finder(t_tetris *begin, int finalsize, char **finalb);
 void			solve(t_tetris *begin, int finalsize, char **finalb);
-t_tetris		*createtri(char **tetrimino, int numord);
+t_tetris		*createtri(char *tetrimino, int numord);
 t_tetris		*addtetri(char **base);
 int				ressize(void);
 char			**finalbase(int size);

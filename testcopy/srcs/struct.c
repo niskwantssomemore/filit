@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 12:27:06 by sazalee           #+#    #+#             */
-/*   Updated: 2019/09/12 17:40:08 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/09/12 18:03:38 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,50 @@ void		free_lst(t_tetris *begin)
 	}
 }
 
+t_tetris	*fill_node(char *bufer, t_tetris *new, int numord)
+{
+	int        i;
+	int        j;
+	int        k;
+	k = 0;
+	i = 0;
+	while (i < 4)
+	{
+		j = 0;
+		while (j < 4)
+		{
+			new->tetrimino[i][j] = bufer[k];
+			j++;
+			k++;
+		}
+		k++;
+		i++;
+	}
+	new->alphabet = 'A' + numord;
+ 	new->x = 0;
+	new->y = 0;
+	new->next = NULL;
+	return (new);
+}
+
 t_tetris	*createtri(char *tetrimino, int numord)
 {
 	t_tetris	*addition;
+	int			i;
 	
-	addition = NULL;
-	if (!(addition = (t_tetris*)malloc(sizeof(t_tetris))))
-	{
+	if (!(addition = (t_tetris *)ft_memalloc(sizeof(t_tetris))) && (!(addition->tetrimino = (char **)ft_memalloc(sizeof(char *) * 4))))
 		return (NULL);
+	i = 0;
+	ft_putstr("OK");
+	while (i < 4)
+	{
+		if (!(addition->tetrimino[i] = ft_strnew(4)))
+			return (NULL);
+		ft_putstr("KUKU");
+		i++;
 	}
-	addition->tetrimino = tetrimino;
-	addition->alphabet = 'A' + numord;
-	addition->x = 0;
-	addition->y = 0;
-	addition->next = NULL;
-	return (addition);
+	ft_putstr("KIRILL");
+	return (fill_node(tetrimino, addition, numord));
 }
 
 t_tetris	*addtetri(char **base)
@@ -56,7 +85,7 @@ t_tetris	*addtetri(char **base)
 	temp = begin;
 	while (count < g_tetrinumber)
 	{
-		temp->next = createtri(ft_strsplit(base[count], '\n'), count);
+		temp->next = createtri(base[count], count);
 		temp = temp->next;
 		count++;
 	}
