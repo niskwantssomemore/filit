@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 12:27:06 by sazalee           #+#    #+#             */
-/*   Updated: 2019/09/25 17:43:13 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/09/25 18:55:28 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,19 @@
 
 void		free_lst(t_tetris *begin)
 {
-	t_tetris	*ptr;
-	
+	int        i;
+	t_tetris    *ptr;
+
 	while (begin != NULL)
 	{
 		ptr = begin;
-		ft_freetime(begin->tetrimino, 4);
-		//ft_strdel(&begin->tetrimino[3]);
+		i = 0;
+		while (i < 4)
+		{
+			ft_memdel((void **)(&(begin->tetrimino[i])));
+			i++;
+		}
+		ft_memdel((void **)(begin->tetrimino));
 		begin = begin->next;
 		ft_memdel((void **)(&ptr));
 	}
