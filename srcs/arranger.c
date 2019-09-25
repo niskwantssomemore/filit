@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 12:53:03 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/06 13:13:16 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/09/25 17:30:25 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ t_tetris	*leftup(t_tetris *begin)
 	while (temp)
 	{
 		x = xmin(temp->tetrimino);
+		printf("%d", x);
 		left(x, temp->tetrimino);
 		y = ymin(temp->tetrimino);
 		up(y, temp->tetrimino);

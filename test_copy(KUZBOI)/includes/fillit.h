@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 16:18:09 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/29 14:42:13 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/09/25 17:32:35 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <fcntl.h>
+#include <stdio.h>
 # include "../libft/libft.h"
 # define BUFF_SIZE 4096
 

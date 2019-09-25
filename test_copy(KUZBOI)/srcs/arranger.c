@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 12:53:03 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/06 13:13:16 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/09/25 17:37:27 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int			ymin(char **field)
 	{
 		while (field[x][y] != '#' && field[x][y] != '\0')
 			y++;
+		printf("%d", y);
 		if (y == 4)
 			targety++;
 		else
@@ -112,8 +113,10 @@ t_tetris	*leftup(t_tetris *begin)
 	while (temp)
 	{
 		x = xmin(temp->tetrimino);
+		printf("%d", x);
 		left(x, temp->tetrimino);
 		y = ymin(temp->tetrimino);
+		printf("%d", y);
 		up(y, temp->tetrimino);
 		temp = temp->next;
 	}

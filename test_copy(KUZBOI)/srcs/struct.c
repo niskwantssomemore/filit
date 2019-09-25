@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 12:27:06 by sazalee           #+#    #+#             */
-/*   Updated: 2019/08/29 15:03:05 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/09/25 17:06:38 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ t_tetris	*createtri(char **tetrimino, int numord)
 	addition->x = 0;
 	addition->y = 0;
 	addition->next = NULL;
+	result_of_project(addition->tetrimino, 4);
+	ft_putchar('\n');
 	return (addition);
 }
 

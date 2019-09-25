@@ -6,11 +6,42 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 12:39:00 by sazalee           #+#    #+#             */
-/*   Updated: 2019/09/11 18:15:35 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/09/25 17:41:42 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
+
+char		**transport(char *base)
+{
+	int		x;
+	int		y;
+	int		z;
+	char	**transport;
+
+	x = 0;
+	y = 0;
+	z = 0;
+	transport = NULL;
+	if (!(transport = (char**)malloc(sizeof(char *) * 4 + 1)))
+		return (NULL);
+	while (base[z] != 0)
+	{
+		if (!(transport[x] = (char*)malloc(sizeof(char) * 5 + 1)))
+			return (NULL);
+		while (y <= 4)
+		{
+			transport[x][y] = base[z];
+			z++;
+			y++;
+		}
+		y = 0;
+		transport[x][4] = '\0';
+		x++;
+	}
+	transport[x] = NULL;
+	return (transport);
+}
 
 int			counter_of_tetriminos(char *buf)
 {
